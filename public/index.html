@@ -11,6 +11,30 @@
         <h1>Countries</h1>
         <p>total population: {{ totalPopulation }}</p>
 
+        <label for="country">Choose a country:</label>
+
+
+<select v-model="selected">
+    <option v-for="country in countriesData" :value="country">
+      {{ country.name }}
+    </option>
+  </select>
+
+  <button v-on:click="addToFavourites">Add to favourites</button>
+
+  <h2 v-for="fav in favourites"> {{fav.name}} </h2>
+  
+  
+  <section>
+    <div id="selected" v-if="selected">
+        
+      <h2>{{ selected.name }}</h2>
+      <img :src="selected.flag">
+      
+    </div>
+  </section>
+
+
      
         
     </div>

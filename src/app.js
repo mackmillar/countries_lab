@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', function(){
         el: '#app',
         data: {
             totalPop: 0,
-            countriesData: []
+            countriesData: [],
+            selected: null,
+            favourites: []
         },
         mounted(){
             this.fetchTotalPop();
@@ -19,7 +21,9 @@ document.addEventListener('DOMContentLoaded', function(){
             
                 }, 0);
 
-        },},
+
+            },
+        },
         
         
         
@@ -27,9 +31,13 @@ document.addEventListener('DOMContentLoaded', function(){
             fetchTotalPop: function() {
                 fetch("https://restcountries.eu/rest/v2/all")
                     .then(response => response.json())
-                    .then(data => this.countriesData = data);
-                    
-            }
+                    .then(data => this.countriesData = data);     
+            },
+
+            addToFavourites: function() {
+                this.favourites.push(this.selected);
+                console.log(this.selected)
+            },
         }
 
         });
